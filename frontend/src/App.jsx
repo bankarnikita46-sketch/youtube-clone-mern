@@ -12,7 +12,7 @@ import UploadVideo from "./pages/UploadVideo";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [search, setSearch] = useState("");
 
   return (
@@ -23,7 +23,10 @@ export default function App() {
         setSearch={setSearch}
       />
       <div className="flex pt-14">
-        <Sidebar open={sidebarOpen} />
+        <Sidebar
+          open={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
         <main
           className={`flex-1 transition-all duration-200 ${
             sidebarOpen ? "md:ml-60" : "md:ml-20"
